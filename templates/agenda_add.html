@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{%block titulo %}
+Agregar contacto
+{% endblock %}
+
+{%block contenido %}
+<H1>Contacto ADD</H1>
+<form method="post">
+    <input type="number" name="txtid"/><br>
+    <input type="text" name="txtnombre" placeholder="Nombre" required /><br>
+    <input type="text" name="txtapellido" placeholder="Apellido" required /><br>
+    <input type="text" name="txtdireccion" placeholder="Dirección" /><br>
+    <input type="text" name="txttelefono" placeholder="Teléfono" required /><br>
+    <input type="email" name="txtcorreo" placeholder="Correo electrónico" required /><br>
+    <select name="genero" required>
+        <option value="">Seleccione género</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+    </select><br><br>
+
+    <button type="reset" class="btn btn-danger">Cancelar</button>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+{% endblock %}

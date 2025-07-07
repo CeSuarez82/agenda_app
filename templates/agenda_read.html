@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Detalle del Contacto
+{% endblock %}
+
+{% block contenido %}
+<h2 class="mb-4">Información del Contacto</h2>
+
+<div class="card">
+    <div class="card-body">
+
+        <p><strong>ID:</strong> {{ contacto.id }}</p>
+        <p><strong>Nombre:</strong> {{ contacto.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ contacto.apellido }}</p>
+        <p><strong>Dirección:</strong> {{ contacto.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
+        <p><strong>Correo:</strong> {{ contacto.correo }}</p>
+        <p><strong>Género:</strong> {{ contacto.genero }}</p>
+        <p><strong>Fecha de Creación:</strong> {{ contacto.fecha_creacion.strftime('%d/%m/%Y %H:%M') }}</p>
+
+        <a href="{{ url_for('agenda_list') }}" class="btn btn-secondary mt-3">Volver</a>
+        <a href="{{ url_for('agenda_update', id=contacto.id) }}" class="btn btn-success mt-3">Modificar</a>
+        <a href="{{ url_for('agenda_delete', id=contacto.id) }}" class="btn btn-danger mt-3">Eliminar</a>
+    </div>
+</div>
+{% endblock %}

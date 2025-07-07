@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{%block titulo %}
+Agregar Tarea
+{% endblock %}
+
+{%block contenido %}
+<H1>Editar Contacto</H1>
+
+<form method="post">
+
+    <input type="number" name="txtid" value="{{ contacto.id }}" readonly="true" /><br><br>
+    <input type="text" name="nombre" value="{{ contacto.nombre }}" placeholder="Nombre" required /><br><br>
+    <input type="text" name="apellido" value="{{ contacto.apellido }}" placeholder="Apellido" required /><br><br>
+    <input type="text" name="direccion" value="{{ contacto.direccion }}" placeholder="Dirección" /><br><br>
+    <input type="text" name="telefono" value="{{ contacto.telefono }}" placeholder="Teléfono" required /><br><br>
+    <input type="email" name="correo" value="{{ contacto.correo }}" placeholder="Correo electrónico" required /><br><br>
+    <select name="genero" required>
+        <option value="">Seleccione género</option>
+        <option value="Masculino" {% if contacto.genero == "Masculino" %}selected{% endif %}>Masculino</option>
+        <option value="Femenino" {% if contacto.genero == "Femenino" %}selected{% endif %}>Femenino</option>
+    </select><br><br>
+
+    <button type="reset" class="btn btn-danger">Cancelar</button>
+    <button type="submit" class="btn btn-primary">Modificar</button>
+
+</form>
+{% endblock %}

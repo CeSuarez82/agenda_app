@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block titulo %}
+AGENDA CS
+{% endblock %}
+
+{%block contenido %}
+<H1 class="animate__animated animate__bounce">Hola, {{user.username }}</H1>
+<a href="tarea_add"><button class="btn btn-primary">Agregar Contacto</button></a><br>
+
+<!-- {{tareas}} -->
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Género</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in agenda %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.apellido }}</td>
+            <td>{{ c.direccion }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>{{ c.correo }}</td>
+            <td>{{ c.genero }}</td>
+            <td>
+               <a href="agenda_delete/{{t.id}}"><button class="btn btn-danger">Eliminar</button></a>
+               <a href="agenda_update/{{t.id}}"><button class="btn btn-success">Modificar</button></a><br>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
