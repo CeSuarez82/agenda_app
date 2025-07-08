@@ -1,27 +1,54 @@
 {% extends "base.html" %}
-
 {% block titulo %}
-Detalle del Contacto
+Agenda de Contactos
 {% endblock %}
 
 {% block contenido %}
-<h2 class="mb-4">Información del Contacto</h2>
 
-<div class="card">
-    <div class="card-body">
+<h1 class="animate__animated animate__fadeInDown mt-3">Hola, {{ user.username }}</h1>
 
-        <p><strong>ID:</strong> {{ contacto.id }}</p>
-        <p><strong>Nombre:</strong> {{ contacto.nombre }}</p>
-        <p><strong>Apellido:</strong> {{ contacto.apellido }}</p>
-        <p><strong>Dirección:</strong> {{ contacto.direccion }}</p>
-        <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
-        <p><strong>Correo:</strong> {{ contacto.correo }}</p>
-        <p><strong>Género:</strong> {{ contacto.genero }}</p>
-        <p><strong>Fecha de Creación:</strong> {{ contacto.fecha_creacion.strftime('%d/%m/%Y %H:%M') }}</p>
+<!-- Botón para agregar contacto -->
+<a href="{{ url_for('agenda_add') }}">
+    <button class="btn btn-primary my-3">
+        <i class="bi bi-person-plus-fill"></i> Agregar Contacto
+    </button>
+</a>
 
-        <a href="{{ url_for('agenda_list') }}" class="btn btn-secondary mt-3">Volver</a>
-        <a href="{{ url_for('agenda_update', id=contacto.id) }}" class="btn btn-success mt-3">Modificar</a>
-        <a href="{{ url_for('agenda_delete', id=contacto.id) }}" class="btn btn-danger mt-3">Eliminar</a>
-    </div>
-</div>
+<!-- Tabla de contactos -->
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Género</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in agendas %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.nombre }}</td>
+            <td>{{ t.apellido }}</td>
+            <td>{{ t.direccion }}</td>
+            <td>{{ t.telefono }}</td>
+            <td>{{ t.correo }}</td>
+            <td>{{ t.genero }}</td>
+            <td>
+                <a href="{{ url_for('agenda_update', id=t.id) }}" class="btn btn-success btn-sm">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+                <a href="{{ url_for('agenda_delete', id=t.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar este contacto?')">
+                    <i class="bi bi-trash-fill"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

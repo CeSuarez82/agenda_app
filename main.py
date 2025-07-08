@@ -9,7 +9,7 @@ import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] ='saturno'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///proyecto.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///agenda.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
@@ -78,7 +78,7 @@ def agenda_update(id):
         obj.apellido =request.form.get('txtapellido')
         obj.direccion =request.form.get('txtdireccion')
         obj.telefono = request.form.get('txttelefono')
-        obj.correo =request.form.get('txtcoreo')
+        obj.correo =request.form.get('txtcorreo')
         obj.genero =request.form.get('txtgenero')
         db.session.commit()
         return redirect(url_for('agenda_read'))

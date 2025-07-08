@@ -5,7 +5,7 @@ AGENDA CS
 
 {%block contenido %}
 <H1 class="animate__animated animate__bounce">Hola, {{user.username }}</H1>
-<a href="tarea_add"><button class="btn btn-primary">Agregar Contacto</button></a><br>
+<a href="{{ url_for('agenda_add') }}"><button class="btn btn-primary">Agregar Contacto</button></a><br>
 
 <!-- {{tareas}} -->
 
@@ -22,15 +22,15 @@ AGENDA CS
         </tr>
     </thead>
     <tbody>
-        {% for t in agenda %}
+        {% for t in agendas %}
         <tr>
-            <td>{{ c.id }}</td>
-            <td>{{ c.nombre }}</td>
-            <td>{{ c.apellido }}</td>
-            <td>{{ c.direccion }}</td>
-            <td>{{ c.telefono }}</td>
-            <td>{{ c.correo }}</td>
-            <td>{{ c.genero }}</td>
+            <td>{{ t.id }}</td>
+            <td>{{ t.nombre }}</td>
+            <td>{{ t.apellido }}</td>
+            <td>{{ t.direccion }}</td>
+            <td>{{ t.telefono }}</td>
+            <td>{{ t.correo }}</td>
+            <td>{{ t.genero }}</td>
             <td>
                <a href="agenda_delete/{{t.id}}"><button class="btn btn-danger">Eliminar</button></a>
                <a href="agenda_update/{{t.id}}"><button class="btn btn-success">Modificar</button></a><br>
